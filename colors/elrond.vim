@@ -13,10 +13,11 @@ if exists("syntax_on")
   syntax reset
 endif
 let g:colors_name = "elrond"
-let g:elrond#cursorline256 = get(g:, 'elrond#cursorline256', 1)
-let g:elrond#cursorline16  = get(g:, 'elrond#cursorline16' , 0)
 
-hi Normal     guifg=#fafafa guibg=black
+let g:elrond#cursorline16 = get(g:, 'elrond#cursorline16' , 'bold')
+
+
+hi Normal     guifg=#fafafa  guibg=black
 
 hi Comment    term=italic    ctermfg=DarkCyan        guifg=#80a0ff
 hi Constant   term=underline ctermfg=Magenta         guifg=Magenta
@@ -35,43 +36,58 @@ hi Todo       term=standout  ctermbg=Yellow ctermfg=Black guifg=Blue guibg=Yello
 highlight CursorLine NONE
 
 if &t_Co == 256
-    if g:elrond#cursorline256 == 1
-        highlight CursorLine ctermbg=235
-    endif
+    highlight CursorLine    ctermbg=233
 
-    highlight CursorLineNr ctermbg=235 ctermfg=246
-    highlight LineNr       ctermbg=234 ctermfg=238
-    highlight SignColumn   ctermbg=234
-    highlight Pmenu        ctermbg=235 ctermfg=White
-    highlight PmenuSel     ctermbg=238 ctermfg=White
-    highlight PmenuSbar    ctermbg=238
-    highlight PmenuThumb   ctermbg=240
-    highlight VertSplit    ctermbg=235 ctermfg=235
-    highlight StatusLine   ctermbg=235 ctermfg=246 cterm=NONE
-    highlight StatusLineNC ctermbg=235 ctermfg=230 cterm=bold
-    highlight TabLine      ctermbg=235 ctermfg=246 cterm=NONE
-    highlight TabLineSel   ctermbg=246 ctermfg=235
-    highlight TabLineFill  ctermbg=235             cterm=NONE
+    highlight CursorLineNr  ctermbg=235 ctermfg=246
+    highlight LineNr        ctermbg=234 ctermfg=238
+    highlight SignColumn    ctermbg=234
+    highlight Pmenu         ctermbg=235 ctermfg=White
+    highlight PmenuSel      ctermbg=238 ctermfg=White
+    highlight PmenuSbar     ctermbg=238
+    highlight PmenuThumb    ctermbg=240
+    highlight VertSplit     ctermbg=235 ctermfg=235
+    highlight StatusLine    ctermbg=235 ctermfg=230 cterm=NONE
+    highlight StatusLineNC  ctermbg=235 ctermfg=246 cterm=NONE
+    highlight TabLine       ctermbg=235 ctermfg=246 cterm=NONE
+    highlight TabLineSel    ctermbg=246 ctermfg=235
+    highlight TabLineFill   ctermbg=235             cterm=NONE
+
+    highlight LiningItem    ctermbg=236 ctermfg=252
+    highlight LiningVertSep ctermbg=236 ctermfg=240
+    highlight LiningBufName ctermbg=237 ctermfg=252 cterm=bold
+    highlight LiningLnCol   ctermbg=237 ctermfg=252
 else
-    if g:elrond#cursorline16 == 0
-        highlight CursorLine ctermbg=DarkGrey cterm=bold
+    if g:elrond#cursorline16 == 'bold'
+        highlight CursorLine cterm=bold
+    elseif g:elrond#cursorline16 == 'reverse'
+        highlight CursorLine cterm=reverse
+    elseif g:elrond#cursorline16 == 'underline'
+        highlight CursorLine cterm=underline
     endif
 
-    highlight CursorLineNr ctermbg=DarkGrey  ctermfg=White     cterm=bold
-    highlight LineNr       ctermbg=DarkGrey  ctermfg=LightGrey
-    highlight SignColumn   ctermbg=Black     cterm=bold
-    highlight Pmenu        ctermbg=DarkGrey  ctermfg=White
-    highlight PmenuSel     ctermbg=LightGrey ctermfg=White     cterm=bold
-    highlight PmenuSbar    ctermbg=DarkGrey  ctermfg=White
-    highlight PmenuThumb   ctermbg=DarkGrey  ctermfg=LightGrey
-    highlight VertSplit    ctermbg=DarkGrey  ctermfg=DarkGrey
-    highlight StatusLine   ctermbg=White     ctermfg=DarkGrey  cterm=reverse,bold
-    highlight StatusLineNC ctermbg=LightGrey ctermfg=DarkGrey  cterm=reverse
-    highlight TabLine      ctermbg=DarkGrey  ctermfg=LightGrey cterm=NONE
-    highlight TabLineSel   ctermbg=LightGrey ctermfg=White
-    highlight TabLineFill  ctermbg=DarkGrey                    cterm=NONE
+    highlight CursorLineNr  ctermbg=DarkGrey  ctermfg=White     cterm=bold
+    highlight LineNr        ctermbg=DarkGrey  ctermfg=LightGrey
+    highlight SignColumn    ctermbg=Black                       cterm=bold
+    highlight Pmenu         ctermbg=DarkGrey  ctermfg=White
+    highlight PmenuSel      ctermbg=LightGrey ctermfg=White     cterm=bold
+    highlight PmenuSbar     ctermbg=DarkGrey  ctermfg=White
+    highlight PmenuThumb    ctermbg=DarkGrey  ctermfg=LightGrey
+    highlight VertSplit     ctermbg=DarkGrey  ctermfg=DarkGrey
+    highlight StatusLine    ctermbg=White     ctermfg=0         cterm=reverse,bold
+    highlight StatusLineNC  ctermbg=LightGrey ctermfg=0         cterm=reverse,bold
+    highlight TabLine       ctermbg=DarkGrey  ctermfg=LightGrey cterm=NONE
+    highlight TabLineSel    ctermbg=LightGrey ctermfg=White
+    highlight TabLineFill   ctermbg=DarkGrey                    cterm=NONE
+
+    highlight LiningItem    ctermbg=DarkGrey  ctermfg=White cterm=NONE
+    highlight LiningVertSep ctermbg=DarkGrey  ctermfg=White cterm=NONE
+    highlight LiningBufName ctermbg=LightGrey ctermfg=Black cterm=bold
+    highlight link LiningLnCol LiningBufName
 endif
 
+highlight LiningWarn  ctermbg=Brown ctermfg=Yellow
+highlight LiningError ctermbg=Red   ctermfg=White
+highlight link LiningVcsInfo LiningItem
 
 hi link String         Constant
 hi link Character      Constant
