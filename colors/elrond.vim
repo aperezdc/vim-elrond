@@ -14,6 +14,7 @@ if exists("syntax_on")
 endif
 let g:colors_name = "elrond"
 
+let g:elrond#cursorline   = get(g:, 'elrond#cursorline',         1)
 let g:elrond#cursorline16 = get(g:, 'elrond#cursorline16' , 'bold')
 
 
@@ -36,7 +37,10 @@ hi Todo       term=standout  ctermbg=Yellow ctermfg=Black guifg=Blue guibg=Yello
 highlight CursorLine NONE
 
 if &t_Co == 256
-    highlight CursorLine    ctermbg=233
+    if g:elrond#cursorline
+        set cursorline
+        highlight CursorLine ctermbg=233
+    endif
 
     highlight CursorLineNr  ctermbg=235 ctermfg=246
     highlight LineNr        ctermbg=234 ctermfg=238
@@ -57,32 +61,55 @@ if &t_Co == 256
     highlight LiningBufName ctermbg=237 ctermfg=252 cterm=bold
     highlight LiningLnCol   ctermbg=237 ctermfg=252
 else
-    if g:elrond#cursorline16 == 'bold'
-        highlight CursorLine cterm=bold
-    elseif g:elrond#cursorline16 == 'reverse'
-        highlight CursorLine cterm=reverse
-    elseif g:elrond#cursorline16 == 'underline'
-        highlight CursorLine cterm=underline
-    endif
-
+    "
+    " Common definitions for 8 & 16 color terminals
+    "
     highlight CursorLineNr  ctermbg=DarkGrey  ctermfg=White     cterm=bold
     highlight LineNr        ctermbg=DarkGrey  ctermfg=LightGrey
     highlight SignColumn    ctermbg=Black                       cterm=bold
-    highlight Pmenu         ctermbg=DarkGrey  ctermfg=White
-    highlight PmenuSel      ctermbg=LightGrey ctermfg=White     cterm=bold
-    highlight PmenuSbar     ctermbg=DarkGrey  ctermfg=White
-    highlight PmenuThumb    ctermbg=DarkGrey  ctermfg=LightGrey
     highlight VertSplit     ctermbg=DarkGrey  ctermfg=DarkGrey
-    highlight StatusLine    ctermbg=White     ctermfg=0         cterm=reverse,bold
     highlight StatusLineNC  ctermbg=LightGrey ctermfg=0         cterm=reverse,bold
     highlight TabLine       ctermbg=DarkGrey  ctermfg=LightGrey cterm=NONE
     highlight TabLineSel    ctermbg=LightGrey ctermfg=White
     highlight TabLineFill   ctermbg=DarkGrey                    cterm=NONE
 
-    highlight LiningItem    ctermbg=DarkGrey  ctermfg=White cterm=NONE
-    highlight LiningVertSep ctermbg=DarkGrey  ctermfg=White cterm=NONE
-    highlight LiningBufName ctermbg=LightGrey ctermfg=Black cterm=bold
-    highlight link LiningLnCol LiningBufName
+    if &t_Co == 16
+        if g:elrond#cursorline
+            set cursorline
+            if g:elrond#cursorline16 == 'bold'
+                highlight CursorLine cterm=bold
+            elseif g:elrond#cursorline16 == 'reverse'
+                highlight CursorLine cterm=reverse
+            elseif g:elrond#cursorline16 == 'underline'
+                highlight CursorLine cterm=underline
+            endif
+        endif
+
+        highlight Pmenu         ctermbg=DarkGrey  ctermfg=White
+        highlight PmenuSel      ctermbg=LightGrey ctermfg=White     cterm=bold
+        highlight PmenuSbar     ctermbg=DarkGrey  ctermfg=White
+        highlight PmenuThumb    ctermbg=DarkGrey  ctermfg=LightGrey
+
+        highlight StatusLine    ctermbg=White     ctermfg=0         cterm=reverse,bold
+        highlight LiningItem    ctermbg=DarkGrey  ctermfg=White cterm=NONE
+        highlight LiningBufName ctermbg=LightGrey ctermfg=Black cterm=bold
+    else
+        " Cursor lines with 8 colors only are quite terribly looking
+        set nocursorline
+
+        highlight Pmenu         ctermfg=NONE ctermbg=NONE  cterm=reverse,bold
+        highlight PmenuSel      ctermfg=Cyan ctermbg=Black cterm=reverse
+        highlight PmenuSbar     ctermfg=Cyan ctermbg=NONE
+        highlight PmenuThumb    ctermfg=Cyan ctermbg=NONE  cterm=bold
+
+        highlight StatusLine    ctermfg=NONE ctermbg=NONE  cterm=reverse
+        highlight StatusLineNC  ctermfg=NONE ctermbg=NONE  cterm=reverse,bold
+        highlight LiningBufName ctermfg=Cyan ctermbg=Black cterm=reverse
+        highlight link LiningItem StatusLine
+    endif
+
+    highlight link LiningLnCol   LiningBufName
+    highlight link LiningVertSep LiningItem
 endif
 
 highlight LiningWarn  ctermbg=Brown ctermfg=Yellow
