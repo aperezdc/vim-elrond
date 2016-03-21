@@ -87,11 +87,11 @@ else
         endif
 
         highlight Pmenu         ctermbg=DarkGrey  ctermfg=White
-        highlight PmenuSel      ctermbg=LightGrey ctermfg=White     cterm=bold
+        highlight PmenuSel      ctermbg=LightGrey ctermfg=White cterm=bold
         highlight PmenuSbar     ctermbg=DarkGrey  ctermfg=White
         highlight PmenuThumb    ctermbg=DarkGrey  ctermfg=LightGrey
 
-        highlight StatusLine    ctermbg=White     ctermfg=0         cterm=reverse,bold
+        highlight StatusLine    ctermbg=White     ctermfg=0     cterm=reverse,bold
         highlight LiningItem    ctermbg=DarkGrey  ctermfg=White cterm=NONE
         highlight LiningBufName ctermbg=White     ctermfg=Black cterm=bold
         highlight LiningBufPath ctermbg=LightGrey ctermfg=Black cterm=bold
