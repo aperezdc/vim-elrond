@@ -59,6 +59,7 @@ if &t_Co == 256
     highlight LiningItem    ctermbg=236 ctermfg=252
     highlight LiningVertSep ctermbg=236 ctermfg=240
     highlight LiningBufName ctermbg=237 ctermfg=252 cterm=bold
+    highlight LiningBufPath ctermbg=237 ctermfg=252 cterm=NONE
     highlight LiningLnCol   ctermbg=237 ctermfg=252
 else
     "
@@ -92,7 +93,8 @@ else
 
         highlight StatusLine    ctermbg=White     ctermfg=0         cterm=reverse,bold
         highlight LiningItem    ctermbg=DarkGrey  ctermfg=White cterm=NONE
-        highlight LiningBufName ctermbg=LightGrey ctermfg=Black cterm=bold
+        highlight LiningBufName ctermbg=White     ctermfg=Black cterm=bold
+        highlight LiningBufPath ctermbg=LightGrey ctermfg=Black cterm=bold
     else
         " Cursor lines with 8 colors only are quite terribly looking
         set nocursorline
@@ -105,6 +107,7 @@ else
         highlight StatusLine    ctermfg=NONE ctermbg=NONE  cterm=reverse
         highlight StatusLineNC  ctermfg=NONE ctermbg=NONE  cterm=reverse,bold
         highlight LiningBufName ctermfg=Cyan ctermbg=Black cterm=reverse
+        highlight LiningBufPath ctermfg=Cyan ctermbg=Black cterm=reverse,bold
         highlight link LiningItem StatusLine
     endif
 
