@@ -51,7 +51,7 @@ highlight PmenuSel      ctermbg=238 ctermfg=White guibg=#444444 guifg=#ffffff
 highlight PmenuSbar     ctermbg=238               guibg=#444444
 highlight PmenuThumb    ctermbg=240               guibg=#585858
 highlight VertSplit     ctermbg=235 ctermfg=235   guibg=#262626 guifg=#262626
-highlight StatusLine    ctermbg=235 ctermfg=230   guibg=#262626 guifg=#ffffd7 cterm=NONE gui=NONE
+highlight StatusLine    ctermbg=235 ctermfg=248   guibg=#262626 guifg=#ffffd7 cterm=NONE gui=NONE
 highlight StatusLineNC  ctermbg=235 ctermfg=246   guibg=#262626 guifg=#949494 cterm=NONE gui=NONE
 highlight TabLine       ctermbg=235 ctermfg=246   guibg=#262626 guifg=#949494 cterm=NONE gui=NONE
 highlight TabLineSel    ctermbg=246 ctermfg=235   guibg=#949494 guifg=#262626 cterm=NONE gui=NONE
