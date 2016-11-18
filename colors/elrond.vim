@@ -142,3 +142,6 @@ hi link SpecialChar    Special
 hi link Delimiter      Special
 hi link SpecialComment Special
 hi link Debug          Special
+
+hi ColorColumn NONE
+hi link ColorColumn    CursorLine
