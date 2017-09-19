@@ -113,6 +113,12 @@ if &t_Co < 256
     endif
 
     highlight link LiningVertSep LiningItem
+else
+    " Use more pleasant colors for Diff highlights whenever possible.
+    highlight DiffAdd    cterm=bold ctermbg=22 ctermfg=118
+    highlight DiffDelete cterm=bold ctermbg=52 ctermfg=88
+    highlight DiffChange cterm=NONE ctermbg=236
+    highlight DiffText   cterm=bold ctermbg=53 ctermfg=201
 endif
 
 highlight LiningWarn  ctermbg=Brown ctermfg=Yellow guibg=Brown guifg=Yellow
