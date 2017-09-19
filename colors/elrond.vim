@@ -20,7 +20,7 @@ let g:elrond#cursorline16 = get(g:, 'elrond#cursorline16' , 'bold')
 
 hi Normal     guifg=#dadada  guibg=black
 
-hi Comment    term=italic    ctermfg=DarkCyan        guifg=#00aaaa
+hi Comment    term=italic    ctermfg=DarkCyan        guifg=#00aaaa    cterm=italic
 hi Constant   term=underline ctermfg=Magenta         guifg=Magenta
 hi Special    term=bold      ctermfg=DarkMagenta     guifg=#aa00aa               gui=NONE
 hi Identifier term=underline ctermfg=Cyan            guifg=Cyan       cterm=bold gui=bold
