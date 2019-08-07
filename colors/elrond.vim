@@ -9,10 +9,10 @@
 
 set background=dark
 hi clear
-if exists("syntax_on")
+if exists('syntax_on')
   syntax reset
 endif
-let g:colors_name = "elrond"
+let g:colors_name = 'elrond'
 
 let g:elrond#cursorline   = get(g:, 'elrond#cursorline',         1)
 let g:elrond#cursorline16 = get(g:, 'elrond#cursorline16' , 'bold')
@@ -78,11 +78,11 @@ if &t_Co < 256
     if &t_Co >= 16
         if g:elrond#cursorline
             set cursorline
-            if g:elrond#cursorline16 == 'bold'
+            if g:elrond#cursorline16 ==# 'bold'
                 highlight CursorLine cterm=bold
-            elseif g:elrond#cursorline16 == 'reverse'
+            elseif g:elrond#cursorline16 ==# 'reverse'
                 highlight CursorLine cterm=reverse
-            elseif g:elrond#cursorline16 == 'underline'
+            elseif g:elrond#cursorline16 ==# 'underline'
                 highlight CursorLine cterm=underline
             endif
         endif
