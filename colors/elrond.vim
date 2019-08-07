@@ -119,6 +119,9 @@ else
     highlight DiffDelete cterm=bold ctermbg=52 ctermfg=88
     highlight DiffChange cterm=NONE ctermbg=236
     highlight DiffText   cterm=bold ctermbg=53 ctermfg=201
+
+    highlight SpellBad   ctermbg=52
+    highlight SpellCap   ctermbg=24
 endif
 
 highlight LiningWarn  ctermbg=Brown ctermfg=Yellow guibg=Brown guifg=Yellow
