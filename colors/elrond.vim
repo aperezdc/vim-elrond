@@ -14,13 +14,19 @@ if exists('syntax_on')
 endif
 let g:colors_name = 'elrond'
 
+let g:elrond#use_italics  = get(g:, 'elrond#use_italics',        1)
 let g:elrond#cursorline   = get(g:, 'elrond#cursorline',         1)
 let g:elrond#cursorline16 = get(g:, 'elrond#cursorline16' , 'bold')
 
 
 hi Normal     guifg=#dadada  guibg=black
 
-hi Comment    term=italic    ctermfg=DarkCyan        guifg=#00aaaa    cterm=italic
+if g:elrond#use_italics
+    hi Comment term=italic ctermfg=DarkCyan guifg=#00aaaa cterm=italic
+else
+    hi Comment ctermfg=DarkCyan guifg=#00aaaa
+endif
+
 hi Constant   term=underline ctermfg=Magenta         guifg=Magenta
 hi Special    term=bold      ctermfg=DarkMagenta     guifg=#aa00aa               gui=NONE
 hi Identifier term=underline ctermfg=Cyan            guifg=Cyan       cterm=bold gui=bold
